@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head><title>Dosha Check</title></head>
+<body>
+<h2>Dosha Check</h2>
+<form method="POST">
+    Sleep Quality: <input type="text" name="sleep_quality"><br>
+    Skin Type: <input type="text" name="skin_type"><br>
+    Hunger Level: <input type="text" name="hunger_level"><br>
+    Digestion: <input type="text" name="digestion"><br>
+    <button type="submit">Check</button>
+</form>
+
+{% if dosha %}
+<p>Predicted Dosha: <strong>{{ dosha }}</strong></p>
+{% endif %}
+<a href="{{ url_for('dashboard') }}">Back</a>
+</body>
+</html>
+

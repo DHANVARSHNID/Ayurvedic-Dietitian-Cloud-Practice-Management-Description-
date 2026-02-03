@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Meal Log (last 7 days)</h2>
+<form method="POST" action="{{ url_for('update_meal_log') }}">
+  <table>
+    <tr><th>Date</th><th>Meal</th><th>Type</th><th>Eaten</th></tr>
+    {% for m in meals %}
+      <tr>
+        <td>{{ m.date }}</td>
+        <td>{{ m.meal }}</td>
+        <td>{{ m.meal_type or "—" }}</td>
+        <td>
+          {% if m.eaten %}
+            ✅
+          {% else %}
+            <input type="checkbox" name="eaten_{{ m.id }}">
+          {% endif %}
+        </td>
+      </tr>
+    {% endfor %}
+  </table>
+  <button class="btn" type="submit">Save Meal Log</button>
+</form>
+{% endblock %}

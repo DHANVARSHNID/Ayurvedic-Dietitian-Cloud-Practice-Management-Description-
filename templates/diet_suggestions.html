@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Diet Suggestions</h2>
+{% for meal, foods in food_db.items() %}
+<h3>{{ meal }}</h3>
+<ul>
+    {% for food in foods %}
+        <li>{{ food }}</li>
+    {% endfor %}
+</ul>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Your Personalized Diet Plan</h2>
+<p>Prakriti: {{ patient.prakriti }} | Agni: {{ patient.agni }} | Ama: {{ patient.ama }}</p>
+
+{% for meal, items in plan.items() %}
+  <div class="card">
+    <h3>{{ meal }}</h3>
+    <ul>
+      {% for it in items %}
+        <li>
+            {{ it }}
+            {% if evaluation[it] %}
+              — <span class="{{ 'ok' if evaluation[it].ok else 'avoid' }}">{{ evaluation[it].msg }}</span>
+            {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endfor %}
+
+<h3>Nutrition Summary</h3>
+<table class="nutrition">
+  <tr><th>Item</th><th>Calories</th><th>Protein</th><th>Carbs</th><th>Fat</th></tr>
+  {% for item,info in nutrition.details.items() %}
+    <tr>
+      <td>{{ item }}</td>
+      <td>{{ info.calories }}</td>
+      <td>{{ info.protein }}</td>
+      <td>{{ info.carbs }}</td>
+      <td>{{ info.fat }}</td>
+    </tr>
+  {% endfor %}
+  <tr class="total">
+    <td>Total</td>
+    <td>{{ nutrition.total.calories }}</td>
+    <td>{{ nutrition.total.protein }}</td>
+    <td>{{ nutrition.total.carbs }}</td>
+    <td>{{ nutrition.total.fat }}</td>
+  </tr>
+</table>
+
+<a class="btn" href="{{ url_for('export_diet') }}">Export Today's Diet as PDF</a>
+{% endblock %}

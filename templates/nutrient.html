@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head><title>Nutrient Analysis</title></head>
+<body>
+<h2>Nutrient Analysis</h2>
+<form method="POST" enctype="multipart/form-data">
+    Upload Meal JSON: <input type="file" name="meal_file"><br>
+    <button type="submit">Analyze</button>
+</form>
+
+{% if analysis %}
+<pre>{{ analysis|tojson(indent=2) }}</pre>
+{% endif %}
+{% if error %}<p style="color:red">{{ error }}</p>{% endif %}
+<a href="{{ url_for('dashboard') }}">Back</a>
+</body>
+</html>
+

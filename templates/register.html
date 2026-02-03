@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+/* Center the card */
+form.card {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 30px 40px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Headings */
+form.card h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #333;
+    font-weight: 600;
+}
+
+/* Labels */
+form.card label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: #555;
+}
+
+/* Inputs */
+form.card input[type="text"],
+form.card input[type="number"],
+form.card input[type="email"],
+form.card input[type="password"] {
+    width: 100%;
+    padding: 10px 15px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    font-size: 14px;
+}
+
+/* Input focus effect */
+form.card input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0,123,255,0.3);
+    outline: none;
+}
+
+/* Button */
+form.card .btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+form.card .btn:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    form.card {
+        padding: 20px;
+    }
+}
+</style>
+
+<form method="POST" action="{{ url_for('register') }}" class="card">
+    <h2>Create Account</h2>
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" placeholder="Your full name" required>
+    
+    <label for="age">Age</label>
+    <input type="number" id="age" name="age" placeholder="Your age">
+    
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" placeholder="you@example.com" required>
+    
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" placeholder="Enter password" required>
+    
+    <label for="allergy">Allergies (comma separated)</label>
+    <input type="text" id="allergy" name="allergy" placeholder="e.g. peanuts, gluten">
+    
+    <button class="btn" type="submit">Create Account</button>
+</form>
+{% endblock %}

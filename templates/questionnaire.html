@@ -1,0 +1,157 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+/* Card layout */
+form.card {
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 30px 40px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Heading */
+form.card h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #333;
+    font-weight: 600;
+}
+
+/* Labels */
+form.card label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
+    color: #555;
+}
+
+/* Select and input fields */
+form.card select,
+form.card input[type="text"] {
+    width: 100%;
+    padding: 10px 14px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    font-size: 14px;
+}
+
+/* Focus effect */
+form.card select:focus,
+form.card input:focus {
+    border-color: #28a745;
+    box-shadow: 0 0 6px rgba(40,167,69,0.3);
+    outline: none;
+}
+
+/* Button */
+form.card .btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #28a745;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+form.card .btn:hover {
+    background-color: #1e7e34;
+}
+
+/* Placeholder text styling */
+form.card input::placeholder {
+    color: #999;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    form.card {
+        padding: 20px;
+    }
+}
+</style>
+
+<form method="POST" class="card">
+    <h2>Prakriti Questionnaire</h2>
+
+    <label>Sleep pattern</label>
+    <select name="sleep">
+        <option value="">--select--</option>
+        <option value="light">Light</option>
+        <option value="disturbed">Disturbed</option>
+        <option value="deep">Deep</option>
+        <option value="balanced">Balanced</option>
+    </select>
+
+    <label>Skin</label>
+    <select name="skin">
+        <option value="">--select--</option>
+        <option value="dry">Dry</option>
+        <option value="oily">Oily</option>
+        <option value="moist">Moist</option>
+        <option value="normal">Normal</option>
+    </select>
+
+    <label>Digestion</label>
+    <select name="digestion">
+        <option value="">--select--</option>
+        <option value="irregular">Irregular</option>
+        <option value="strong">Strong</option>
+        <option value="slow">Slow</option>
+        <option value="normal">Normal</option>
+    </select>
+
+    <label>Appetite</label>
+    <select name="appetite">
+        <option value="">--select--</option>
+        <option value="variable">Variable</option>
+        <option value="strong">Strong</option>
+        <option value="low">Low</option>
+    </select>
+
+    <label>Body build</label>
+    <select name="body_build">
+        <option value="">--select--</option>
+        <option value="thin">Thin</option>
+        <option value="medium">Medium</option>
+        <option value="heavy">Heavy</option>
+    </select>
+
+    <label>Temperature sensitivity</label>
+    <select name="temp_sensitivity">
+        <option value="">--select--</option>
+        <option value="cold">Feels cold</option>
+        <option value="hot">Feels hot</option>
+        <option value="cool">Feels cool</option>
+    </select>
+
+    <label>Mood</label>
+    <select name="mood">
+        <option value="">--select--</option>
+        <option value="anxious">Anxious</option>
+        <option value="irritable">Irritable</option>
+        <option value="calm">Calm</option>
+    </select>
+
+    <label>Agni (your digestion quality)</label>
+    <select name="agni">
+        <option value="">--let system infer--</option>
+        <option value="weak">Weak</option>
+        <option value="normal">Normal</option>
+        <option value="strong">Strong</option>
+    </select>
+
+    <label>Ama signs (bloating, heaviness, coated tongue — free text)</label>
+    <input name="ama_signs" placeholder="If yes, list signs">
+
+    <button class="btn" type="submit">Analyze & Save</button>
+</form>
+{% endblock %}

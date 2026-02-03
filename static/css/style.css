@@ -1,0 +1,85 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    background: #f4f6f8;
+    color: #333;
+}
+.header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 40px;
+    background: #2e7d32;
+    color: #fff;
+}
+.header-inner nav a {
+    color: #fff;
+    margin-left: 15px;
+    text-decoration: none;
+    font-weight: 500;
+}
+.header-inner nav a:hover {
+    text-decoration: underline;
+}
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+.card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+.btn {
+    background: #2e7d32;
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    margin-top: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+}
+.btn:hover {
+    background: #1b5e20;
+}
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+table.nutrition, table {
+    width: 100%;
+    border-collapse: collapse;
+}
+table.nutrition th, table.nutrition td, table th, table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+table.nutrition th, table th {
+    background: #2e7d32;
+    color: #fff;
+}
+.total {
+    font-weight: bold;
+    background: #e8f5e9;
+}
+.footer {
+    text-align: center;
+    padding: 10px;
+    margin-top: 40px;
+    background: #2e7d32;
+    color: #fff;
+}
+.alert {
+    padding: 10px 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+}
+.alert.success {background:#c8e6c9; color:#2e7d32;}
+.alert.danger {background:#ffcdd2; color:#b71c1c;}
+.alert.warning {background:#fff3e0; color:#e65100;}
+.alert.info {background:#bbdefb; color:#0d47a1;}

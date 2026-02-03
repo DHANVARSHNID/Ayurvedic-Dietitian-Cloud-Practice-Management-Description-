@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head><title>Recommendations</title></head>
+<body>
+<h2>Diet Recommendations for {{ patient.name }}</h2>
+<ul>
+    {% for item in meal_plan %}
+    <li>{{ item }}</li>
+    {% endfor %}
+</ul>
+<a href="{{ url_for('dashboard') }}">Back</a>
+</body>
+</html>

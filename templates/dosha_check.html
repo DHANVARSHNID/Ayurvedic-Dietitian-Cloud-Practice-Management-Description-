@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Body Type Check</h2>
+<form method="POST">
+    <label>Skin Type (Dry, Hot, Heavy):</label>
+    <input type="text" name="skin" required>
+    
+    <label>Body Type (Dry, Hot, Heavy):</label>
+    <input type="text" name="body" required>
+    
+    <label>Digestion (Dry, Hot, Heavy):</label>
+    <input type="text" name="digestion" required>
+    
+    <button class="btn" type="submit">Check</button>
+</form>
+{% endblock %}

@@ -1,0 +1,158 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="page-title">Welcome, {{ patient.name }}!</h2>
+
+<div class="dashboard-grid">
+
+    <!-- Patient Info Section -->
+    <section class="section-block">
+        <h3>🌿 Your Profile</h3>
+        <p><strong>Prakriti:</strong> {{ patient.prakriti or "Not set" }}</p>
+        <p><strong>Agni:</strong> {{ patient.agni or "Not set" }}</p>
+        <p><strong>Ama:</strong> {{ patient.ama or "Not set" }}</p>
+        <div class="button-group">
+            <a class="btn" href="{{ url_for('questionnaire') }}">Update Questionnaire</a>
+            <a class="btn" href="{{ url_for('diet_plan_page') }}">Generate Diet</a>
+        </div>
+    </section>
+
+    <!-- Today's Meals Section -->
+    <section class="section-block">
+        <h3>🍽️ Today's Meals</h3>
+        {% if meals %}
+        <ul class="meal-list">
+            {% for m in meals %}
+            <li>
+                <span class="meal-date">{{ m.date }}</span>  
+                <span class="meal-name">{{ m.meal }}</span>
+                {% if m.meal_type %}
+                    <span class="meal-type">({{ m.meal_type }})</span>
+                {% endif %}
+                {% if m.eaten %}
+                    <span class="meal-status">✅</span>
+                {% else %}
+                    <span class="meal-status">❌</span>
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p class="empty-msg">No meals logged today.</p>
+        {% endif %}
+
+        <form method="POST" action="{{ url_for('log_meal') }}" class="meal-form">
+            <input name="meal_name" placeholder="Add a meal (e.g., Khichdi)" required>
+            <select name="meal_type">
+                <option>Breakfast</option>
+                <option>Lunch</option>
+                <option>Dinner</option>
+                <option>Snack</option>
+            </select>
+            <button class="btn" type="submit">Add</button>
+        </form>
+    </section>
+
+    <!-- Seasonal Tips Section -->
+    <section class="section-block">
+        <h3>🍃 Seasonal Tips</h3>
+        <ul class="tips-list">
+            {% for s in seasonal %}
+            <li>{{ s }}</li>
+            {% endfor %}
+        </ul>
+        <div class="button-group">
+            <a class="btn" href="{{ url_for('diet_plan_page') }}">View Suggested Diet</a>
+            <a class="btn" href="{{ url_for('export_diet') }}">Export PDF</a>
+        </div>
+    </section>
+</div>
+
+<style>
+    .page-title {
+        text-align: center;
+        color: #2e7d32;
+        margin-bottom: 20px;
+    }
+
+    .section-block {
+        padding: 20px;
+        margin-bottom: 25px;
+        border-left: 5px solid #2e7d32;
+        background: #ffffff;
+        border-radius: 8px;
+    }
+
+    .section-block h3 {
+        color: #2e7d32;
+        margin-bottom: 12px;
+    }
+
+    /* Meals Styling */
+    .meal-list {
+        list-style: none;
+        padding: 0;
+        margin-bottom: 15px;
+    }
+
+    .meal-list li {
+        padding: 10px;
+        margin-bottom: 8px;
+        border-bottom: 1px solid #e0e0e0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #f9fff9;
+        border-radius: 6px;
+    }
+
+    .meal-date {
+        font-size: 0.9em;
+        color: #555;
+        margin-right: 8px;
+    }
+
+    .meal-name {
+        font-weight: bold;
+        color: #2e7d32;
+    }
+
+    .meal-type {
+        font-size: 0.9em;
+        color: #888;
+        margin-left: 6px;
+    }
+
+    .meal-status {
+        font-size: 1.1em;
+    }
+
+    .empty-msg {
+        color: #888;
+        font-style: italic;
+    }
+
+    /* Buttons */
+    .btn {
+        background: #2e7d32;
+        color: white;
+        padding: 8px 14px;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: 0.2s;
+    }
+
+    .btn:hover {
+        background: #1b5e20;
+    }
+
+    .button-group {
+        margin-top: 12px;
+    }
+
+    .button-group .btn {
+        margin-right: 10px;
+    }
+</style>
+
+{% endblock %}

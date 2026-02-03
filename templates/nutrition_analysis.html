@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Nutrition Analysis (Today)</h2>
+{% if items %}
+  <table class="nutrition">
+    <tr><th>Item</th><th>Cal</th><th>Protein</th><th>Carbs</th><th>Fat</th></tr>
+    {% for item,info in details.items() %}
+      <tr>
+        <td>{{ item }}</td>
+        <td>{{ info.calories }}</td>
+        <td>{{ info.protein }}</td>
+        <td>{{ info.carbs }}</td>
+        <td>{{ info.fat }}</td>
+      </tr>
+    {% endfor %}
+    <tr class="total">
+      <td>Total</td>
+      <td>{{ total.calories }}</td>
+      <td>{{ total.protein }}</td>
+      <td>{{ total.carbs }}</td>
+      <td>{{ total.fat }}</td>
+    </tr>
+  </table>
+{% else %}
+  <p>No meals logged today.</p>
+{% endif %}
+{% endblock %}

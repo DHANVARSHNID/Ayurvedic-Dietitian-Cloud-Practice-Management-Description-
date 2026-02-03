@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% block content %}
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f0fdf4;  /* light green background */
+        margin: 0;
+        padding: 0;
+    }
+    .login-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 80vh;
+    }
+    .card {
+        background: white;
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        width: 350px;
+        text-align: center;
+        border-top: 5px solid #22c55e; /* green accent */
+        animation: fadeIn 0.6s ease-in-out;
+    }
+    h2 {
+        margin-bottom: 20px;
+        color: #14532d; /* dark green */
+    }
+    label {
+        display: block;
+        margin: 10px 0 5px;
+        text-align: left;
+        font-weight: bold;
+        color: #166534;
+    }
+    input {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 15px;
+        border: 1px solid #a7f3d0;
+        border-radius: 8px;
+        outline: none;
+        transition: 0.3s;
+        background: #f0fdf4;
+    }
+    input:focus {
+        border-color: #22c55e;
+        box-shadow: 0 0 8px rgba(34,197,94,0.4);
+        background: #fff;
+    }
+    .btn {
+        width: 100%;
+        padding: 12px;
+        background: #22c55e;  /* green */
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+    .btn:hover {
+        background: #15803d; /* darker green */
+    }
+    p {
+        margin-top: 15px;
+        font-size: 14px;
+        color: #333;
+    }
+    a {
+        color: #15803d;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    a:hover {
+        text-decoration: underline;
+    }
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>
+
+<div class="login-container">
+    <form method="POST" action="{{ url_for('login') }}" class="card">
+        <h2>Login</h2>
+        <label>Email</label>
+        <input type="email" name="email" placeholder="Enter your email" required>
+        
+        <label>Password</label>
+        <input type="password" name="password" placeholder="Enter your password" required>
+        
+        <button class="btn" type="submit">Login</button>
+        
+        <p>Don't have an account? 
+            <a href="{{ url_for('register') }}">Register here</a>
+        </p>
+    </form>
+</div>
+
+{% endblock %}
